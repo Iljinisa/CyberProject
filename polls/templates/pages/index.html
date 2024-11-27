@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My App</title>
+  </head>
+  <body>
+    <h1>Hello, world. You're at the polls index.</h1>
+
+    <form method="post" action={% url 'addMessages' %} >
+      {% csrf_token %}
+      <label for="choice">Show messages!</label>
+      <input type="text" name="message" id="choice" />
+      <button type="submit">Submit</button>
+    </form>
+    {% for message in messages %}
+    <h2>{{ message }}</h2>
+    {% endfor %}
+    <form method="post" action={% url 'clearMessages' %}>
+        {% csrf_token %}
+        <button type="submit">Clear Messages</button>
+    </form>
+  </body>
+</html>
