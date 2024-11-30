@@ -6,6 +6,7 @@
   <body>
     <h1>Login</h1>
     <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
       <div>
         <label for="email">Email:</label>
         <input id="username" name="username" required />
@@ -16,12 +17,5 @@
       </div>
       <button type="submit">Login</button>
     </form>
-    {% if form.errors %}
-    <ul>
-      {% for field in form %} {% for error in field.errors %}
-      <li>{{ error }}</li>
-      {% endfor %} {% endfor %}
-    </ul>
-    {% endif %}
   </body>
 </html>
